@@ -5,4 +5,6 @@ let height =
 window.addEventListener("scroll", () => {
   const scrollTop = document.documentElement.scrollTop;
   scroller.style.width = `${(scrollTop / height) * 100}%`;
+  console.log(`${(scrollTop / height) * 100}%`);
+  // console.log(scrollTop);
 });
