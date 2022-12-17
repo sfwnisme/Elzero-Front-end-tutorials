@@ -5,14 +5,14 @@ body {
   font-family: Tahoma, Arial;
 }
 .repos-container {
-  width: 800px;
-  background-color: #F6F6F6;
+  max-width: 800px;
+  background-color: #f6f6f6;
   margin: auto;
 }
 .repos-container .get-repos {
   padding: 20px;
   display: flex;
-  background-color: #EEE;
+  background-color: #eee;
 }
 .repos-container .get-repos input {
   width: 100%;
@@ -22,14 +22,14 @@ body {
   height: 54px;
 }
 .repos-container .get-repos input:focus {
-  outline: 2px solid #F44336;
+  outline: 2px solid #f44336;
 }
 .repos-container .get-repos .get-button {
   width: 140px;
   margin-left: 10px;
   height: 54px;
-  background-color: #F44336;
-  color: #FFF;
+  background-color: #f44336;
+  color: #fff;
   line-height: 54px;
   text-align: center;
   font-weight: bold;
@@ -37,10 +37,10 @@ body {
 }
 .repos-container .show-data {
   padding: 20px;
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
 }
 .repos-container .show-data .repo-box {
-  background-color: #FFF;
+  background-color: #fff;
   padding: 15px;
 }
 .repos-container .show-data .repo-box:not(:last-child) {
@@ -51,7 +51,7 @@ body {
   float: right;
   margin-left: 4px;
   border-radius: 4px;
-  color: #FFF;
+  color: #fff;
   font-size: 12px;
   width: 90px;
   text-align: center;
@@ -59,8 +59,62 @@ body {
 }
 .repos-container .show-data .repo-box a {
   text-decoration: none;
-  background-color: #E91E63;
+  background-color: #e91e63;
 }
 .repos-container .show-data .repo-box span {
   background-color: #009688;
+}
+.show-data {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  gap: 5px;
+}
+
+.main-div {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.main-div > span {
+  flex: 1;
+  text-transform: capitalize;
+}
+.main-div .links {
+  display: flex;
+  /* grid-template-columns: repeat(2, 100px); */
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.main-div .links a {
+  text-decoration: none;
+  background-color: #009688;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  width: 100px;
+}
+.main-div .links span {
+  background-color: #005c96;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  width: 100px;
 }
