@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8rem;
+  padding-block: 6rem;
+}
+.box {
+}
+.box {
+  color: white;
+  padding: 2rem;
+  font-size: 3rem;
+  text-shadow: 0 0 4px black;
+  opacity: 0;
+  transition: 3000ms;
+  -webkit-transition: 3000ms;
+  -moz-transition: 3000ms;
+  -ms-transition: 3000ms;
+  -o-transition: 3000ms;
+}
+.show {
+  transform: translatex(0px) !important;
+  -webkit-transform: translatex(0px) !important;
+  -moz-transform: translatex(0px) !important;
+  -ms-transform: translatex(0px) !important;
+  -o-transform: translatex(0px) !important;
+  opacity: 1 !important;
+}
+
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.orange {
+  background-color: orange;
+}
+.yellow {
+  background-color: yellow;
+}
+.purple {
+  background-color: purple;
+}
+.gold {
+  background-color: gold;
+}
+.silver {
+  background-color: silver;
+}
