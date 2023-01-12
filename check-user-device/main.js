@@ -1,6 +1,7 @@
 let a;
 // all the browsers in phones
 // SOLUTION LINK => https://www.tutorialspoint.com/How-to-detect-a-mobile-device-with-JavaScript
+// ANOTHER SOLUTION LINK => https://dev.to/timhuang/a-simple-way-to-detect-if-browser-is-on-a-mobile-device-with-javascript-44j3
 if (
   navigator.userAgent.match(/Android/i) ||
   navigator.userAgent.match(/webOS/i) ||
