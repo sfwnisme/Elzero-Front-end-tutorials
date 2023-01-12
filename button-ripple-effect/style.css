@@ -1,6 +1,9 @@
-*, html {
-  cursor:none;
-
+*,
+html {
+  cursor: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -11,6 +14,7 @@ body {
   font-family: sans-serif;
   flex-direction: column;
   gap: 2rem;
+  overflow-x: hidden;
 }
 .btn {
   background-color: pink;
@@ -127,21 +131,64 @@ body {
 
 /* ///////////////////// */
 .cursor {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  display: block;
+}
+.cursor::before {
+  content: "";
   position: absolute;
-  background-color: rgba(255, 255, 255, 0);
-  width: 10px;
-  height: 10px;
-  /* top: var(--y);
-  left: var(--x); */
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
+  top: -14.5px;
+  left: -15px;
+  width: 100%;
+  height: 100%;
+  border: 1.6px black;
+  border-style: dotted;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-  border: 2px dashed black;
+  animation: cercular 10s linear infinite;
+  -webkit-animation: cercular 10s linear infinite;
 }
+@keyframes cercular {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+.cursor::after {
+  content: "";
+  background-color: black;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 1px;
+  height: 1px;
+  border-style: dotted;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+a:hover ~ .cursor , button ~ .cursor {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transition: 0.5s transform;
+  -webkit-transition: 0.5s transform;
+  -moz-transition: 0.5s transform;
+  -ms-transition: 0.5s transform;
+  -o-transition: 0.5s transform;
+  opacity: .2;
+}
+
