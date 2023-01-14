@@ -7,3 +7,15 @@ document.addEventListener("mousemove", (event) => {
   cursor.style.left = cursor2.style.left = `${x}px`;
   cursor.style.top = cursor2.style.top = `${y}px`;
 });
+
+let allbtns = document.querySelectorAll("button");
+allbtns.forEach((btn) => {
+  btn.addEventListener("mouseenter", (e) => {
+    cursor.classList.add("active-cursor");
+    e.stopPropagation();
+  });
+  btn.addEventListener("mouseleave", (e) => {
+    cursor.classList.remove("active-cursor");
+    e.stopPropagation();
+  });
+});
