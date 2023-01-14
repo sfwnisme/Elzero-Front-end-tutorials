@@ -7,3 +7,4 @@ document.addEventListener("mousemove", (event) => {
   cursor.style.left = `${x}px`;
   cursor.style.top = `${y}px`;
 });
+console.log("llk")

@@ -39,10 +39,29 @@ const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
 const randomBtn = document.querySelector(".random-btn");
 
-let currentItem = 0;
+let current = 0;
+
 addEventListener("DOMContentLoaded", () => {
-  showPerson(currentItem);
-  console.log(currentItem);
+  // this will save the last index'person' you switched
+  showPerson(localStorage.pos);
+});
+
+nextBtn.addEventListener("click", () => {
+  current++;
+  if (current > reviews.length - 1) {
+    current = 0;
+  }
+  showPerson(current);
+  localStorage.setItem("pos", current);
+});
+
+prevBtn.addEventListener("click", () => {
+  current--;
+  if (current < 0) {
+    current = reviews.length - 1;
+  }
+  showPerson(current);
+  localStorage.setItem("pos", current);
 });
 
 function showPerson(person) {
@@ -52,46 +71,3 @@ function showPerson(person) {
   job.innerText = item.job;
   info.innerText = item.text;
 }
-
-/*===| INFO
-* increase the currentItem value while clicking on nextBtn
-* if the currentItem > reviews.length - 1 'bigger than the array indexes' , return currentItem value to = 0;
-* execute the function 
-
-*/
-
-nextBtn.addEventListener("click", (btn) => {
-  currentItem++;
-  if (currentItem > reviews.length - 1) {
-    currentItem = 0;
-  }
-  showPerson(currentItem);
-});
-
-/*===| INFO
- * give the currentItem variable less number while clicking on prevBtn
- * if the currentItem < 0, retrun the current item to the last index of the array 'reviews'
- * execute the function
- */
-prevBtn.addEventListener("click", () => {
-  currentItem--;
-  if (currentItem < 0) {
-    currentItem = reviews.length - 1;
-  }
-  showPerson(currentItem);
-  console.log(currentItem);
-});
-
-randomBtn.addEventListener("click", randomPerson);
-
-function randomPerson() {
-  let random = Math.floor(Math.random() * reviews.length);
-  currentItem = random;
-  showPerson(currentItem);
-}
-
-Array.prototype.sfwnRandom = function () {
-  return this[Math.floor(Math.random() * this.length)];
-};
-
-console.log(reviews.charAt(sfwnRandom()));
