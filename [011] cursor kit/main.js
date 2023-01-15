@@ -17,16 +17,20 @@ document.body.append(cursorBox);
 /* =============================== */
 
 /* =====[CURSOR EVENTS]===== */
-function cursorBOM(first, second) {
+function cursorBOM() {
   document.addEventListener("mousemove", (event) => {
     let x = event.clientX;
     let y = event.clientY;
 
-    first.style.left = second.style.left = `${x}px`;
-    first.style.top = second.style.top = `${y}px`;
+    // you can use
+    // let x = event.pageX;
+    // let y = event.pageY;
+
+    document.documentElement.style.setProperty("--x", `${x}px`);
+    document.documentElement.style.setProperty("--y", `${y}px`);
   });
 }
-cursorBOM(cursorOne, cursorTwo);
+cursorBOM();
 /* =============================== */
 
 /* =====[CURSOR AUTO FUNCTION]===== */
@@ -61,4 +65,3 @@ function addAndRemove(element, one, two) {
   });
 }
 /* =============================== */
-

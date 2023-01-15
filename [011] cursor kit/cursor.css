@@ -17,6 +17,8 @@ body {
   --cursor-one-clicked: calc(var(--cursor-one-active) * 1.5);
   --cursor-two: 5px;
   --cursor-two-disable: none;
+  --x: ;
+  --y: ;
 }
 .cursor-box {
   overflow: visible;
@@ -40,6 +42,8 @@ body {
   display: block;
   pointer-events: none;
   position: fixed;
+  top: var(--y);
+  left: var(--x);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -56,6 +60,7 @@ body {
 }
 .cursor-one.active {
   background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: grayscale();
   height: var(--cursor-one-active);
   width: var(--cursor-one-active);
   border: none;
@@ -65,6 +70,14 @@ body {
   height: var(--cursor-one-clicked);
   width: var(--cursor-one-clicked);
   border: none;
+  animation: clickAnimation 50ms ease;
+  -webkit-animation: clickAnimation 50ms ease;
+}
+@keyframes clickAnimation {
+  50% {
+    height: 20px;
+    width: 20px;
+  }
 }
 .cursor-two {
   background-color: black;
@@ -73,6 +86,8 @@ body {
   display: block;
   z-index: 10;
   position: fixed;
+  top: var(--y);
+  left: var(--x);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
