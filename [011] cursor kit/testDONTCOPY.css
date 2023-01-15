@@ -1,0 +1,40 @@
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+button {
+  background-color: orangered;
+  border: none;
+  padding: 20px 30px;
+  color: white;
+  font-size: 20px;
+}
+button:hover {
+  background-color: red;
+}
+
+a {
+  background-color: burlywood;
+  color: black;
+  padding: 20px 30px;
+  text-decoration: none;
+}
+a:hover {
+  background-color: rgb(216, 161, 89);
+  color: white;
+  padding: 20px 30px;
+  text-decoration: none;
+}
