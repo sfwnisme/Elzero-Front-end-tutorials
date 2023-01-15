@@ -2,6 +2,12 @@ html,
 * {
   cursor: none;
 }
+@media (max-width: 700px) {
+  html,
+  * {
+    cursor: auto !important;
+  }
+}
 body {
   overflow-x: hidden;
 }
@@ -14,18 +20,12 @@ body {
 }
 .cursor-box {
   overflow: visible;
+  pointer-events: none;
 }
-h1 {
-  display: none;
-  font-size: 30px;
-  text-align: center;
-}
+
 @media (max-width: 700px) {
   .cursor-box {
     display: none;
-  }
-  h1 {
-    display: inline;
   }
 }
 .cursor-one {
