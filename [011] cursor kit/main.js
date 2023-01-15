@@ -50,5 +50,15 @@ function addAndRemove(element, one, two) {
       two.classList.remove("disable");
     });
   });
+  element.forEach((ele) => {
+    // you can also use 'mouseout'
+    ele.addEventListener("click", (e) => {
+      one.classList.add("clicked");
+      setTimeout(() => {
+        one.classList.remove("clicked");
+      }, 50);
+    });
+  });
 }
 /* =============================== */
+

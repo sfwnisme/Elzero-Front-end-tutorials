@@ -7,12 +7,26 @@ body {
 }
 :root {
   --cursor-one: 50px;
+  --cursor-one-active: calc(var(--cursor-one) * 1.5);
+  --cursor-one-clicked: calc(var(--cursor-one-active) * 1.5);
   --cursor-two: 5px;
-  --cursor-one-active: 70px;
   --cursor-two-disable: none;
 }
 .cursor-box {
   overflow: visible;
+}
+h1 {
+  display: none;
+  font-size: 30px;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .cursor-box {
+    display: none;
+  }
+  h1 {
+    display: inline;
+  }
 }
 .cursor-one {
   width: var(--cursor-one);
@@ -46,7 +60,12 @@ body {
   width: var(--cursor-one-active);
   border: none;
 }
-
+.cursor-one.clicked {
+  background-color: rgba(0, 0, 0, 0.564);
+  height: var(--cursor-one-clicked);
+  width: var(--cursor-one-clicked);
+  border: none;
+}
 .cursor-two {
   background-color: black;
   width: var(--cursor-two);
