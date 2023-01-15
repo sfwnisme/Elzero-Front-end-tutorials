@@ -1,12 +1,14 @@
-
 html,
 * {
   cursor: none;
 }
+body {
+  overflow-x: hidden;
+}
 :root {
   --cursor-one: 50px;
-  --cursor-one-active: 70px;
   --cursor-two: 5px;
+  --cursor-one-active: 70px;
   --cursor-two-disable: none;
 }
 .cursor-box {

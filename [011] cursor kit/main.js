@@ -44,6 +44,7 @@ function addAndRemove(element, one, two) {
     });
   });
   element.forEach((ele) => {
+    // you can also use 'mouseout'
     ele.addEventListener("mouseleave", (e) => {
       one.classList.remove("active");
       two.classList.remove("disable");
