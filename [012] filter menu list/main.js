@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
     box.forEach((b) => {
       b.style.display = "none";
     });
-    document.querySelectorAll(localStorage.getItem("data")).forEach((e) => {
+    document.querySelectorAll(localStorage.getgit statusItem("data")).forEach((e) => {
       e.style.display = "flex";
       list.forEach((li) => {
         if (li.dataset.color == localStorage.getItem("data")) {
