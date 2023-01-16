@@ -74,27 +74,31 @@ const menu = [
 ];
 
 let sectionCenter = document.querySelector(".section-center");
-let btns = document.querySelectorAll(".filter-btn");
-console.log(btns);
+let filterBtns = document.querySelectorAll(".filter-btn");
+console.log(filterBtns);
 
 addEventListener("DOMContentLoaded", () => {
-  menuItemsFunction(menu);
+  displayMenuItems(menu);
 });
 
-btns.forEach((btn) => {
+filterBtns.forEach((btn) => {
   console.log(btn);
-  btn.addEventListener("click", (bt) => {
-    let data = bt.target.dataset.id;
-    let filterItem = menu.filter((menuItem) => {
-      if (menuItem.category === data) {
+  btn.addEventListener("click", (e) => {
+    let category = e.currentTarget.dataset.id;
+    let menuCategory = menu.filter((menuItem) => {
+      if (menuItem.category === category) {
         return menuItem;
       }
     });
-    menuItemsFunction(filterItem);
+    if (category === "all") {
+      displayMenuItems(menu);
+    } else {
+      displayMenuItems(menuCategory);
+    }
   });
 });
 
-function menuItemsFunction(box) {
+function displayMenuItems(box) {
   let menuMap = box.map((x) => {
     let article = document.createElement("article");
     article.className = "menu-item";
