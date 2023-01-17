@@ -73,65 +73,72 @@ const menu = [
   },
 ];
 
+/** ===|STEPS
+ * create an array and insert objects contains the details of the projects in it
+ * create onload event 'DOMContentLoaded'
+ * create a function to loop the array and creating html element then append then in DOM
+you will use Array.map() to loop the array of the product details
+
+ * grap the function of the products into 'DOMContentLoaded' event
+    to excute the function after onloading directly
+ * create a loop for the filter buttons
+ * create click event for the buttons
+ * target the dataset.id of the clicked button 
+ * save the dataset.id in a variable
+ * use Array.filter for the main products array
+ * create if condition for filter
+ * if the dataset === the array category display the selected category
+ * create another codition out the filter 
+ * if the clicked button dataset === "all" display all products by adding the products 
+    function with the products details array as a parameter
+ * else display the products function but with the filter variable as a parameter
+ * 
+ */
+
+let filterBtns = document.querySelectorAll(".filter-btn");
+console.log(filterBtns);
+
 let sectionCenter = document.querySelector(".section-center");
-// let filterBtns = document.querySelectorAll(".filter-btn");
-// console.log(filterBtns);
-
-// addEventListener("DOMContentLoaded", () => {
-//   displayMenuItems(menu);
-// });
-
-// filterBtns.forEach((btn) => {
-//   console.log(btn);
-//   btn.addEventListener("click", (e) => {
-//     let category = e.currentTarget.dataset.id;
-//     let menuCategory = menu.filter((menuItem) => {
-//       if (menuItem.category === category) {
-//         return menuItem;
-//       }
-//     });
-//     if (category === "all") {
-//       displayMenuItems(menu);
-//     } else {
-//       displayMenuItems(menuCategory);
-//     }
-//   });
-// });
 
 document.addEventListener("DOMContentLoaded", function () {
-  let menuMap = menu.map((x) => {
-    let article = document.createElement("article");
-    article.className = "menu-item";
-
-    let img = document.createElement("img");
-    img.src = x.img;
-    img.className = "photo";
-    img.alt = x.title;
-
-    let itemInfo = document.createElement("div");
-    itemInfo.className = "item-info";
-
-    let header = document.createElement("header");
-
-    let h4 = document.createElement("h4");
-    h4.innerText = x.title;
-
-    let h42 = document.createElement("h4");
-    h42.innerText = x.price;
-    h42.className = "price";
-
-    let p = document.createElement("p");
-    p.className = "item-text";
-    p.innerText = x.desc;
-
-    itemInfo.append(p);
-    header.append(h42);
-    header.prepend(h4);
-    itemInfo.prepend(header);
-    article.append(itemInfo);
-    article.prepend(img);
-    return article;
-  });
-  sectionCenter.append(...menuMap);
-  console.log(menuMap);
+  displayMenuItems(menu);
 });
+
+filterBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const category = e.currentTarget.dataset.id;
+    const menuCategory = menu.filter((menuItem) => {
+      // console.log(menuItem.category);
+      if (menuItem.category === category) {
+        return menuItem;
+      }
+    });
+    if (category === "all") {
+      displayMenuItems(menu);
+    } else {
+      displayMenuItems(menuCategory);
+    }
+    // displayMenuItems(menuCategory);
+    // console.log(menuCategory);
+  });
+});
+
+function displayMenuItems(menuItems) {
+  let displayMenu = menuItems.map((item) => {
+    return `
+    <article class="menu-item" >
+    <img src="${item.img}" alt="${item.title}" class="photo" />
+    <div class="item-info">
+      <header>
+        <h4>${item.title}</h4>
+        <h4 class="price">${item.price}</h4>
+      </header>
+      <p class="item-text">${item.desc}
+      </p>
+    </div>
+  </article>
+    `;
+  });
+  displayMenu = displayMenu.join("");
+  sectionCenter.innerHTML = displayMenu;
+}
