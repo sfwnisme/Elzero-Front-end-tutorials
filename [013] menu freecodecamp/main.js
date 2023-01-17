@@ -71,6 +71,14 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "stick dinner",
+    category: "dinner",
+    price: 39.99,
+    img: "./images/item-9.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
 ];
 
 /** ===|STEPS
@@ -102,6 +110,11 @@ let sectionCenter = document.querySelector(".section-center");
 
 document.addEventListener("DOMContentLoaded", function () {
   displayMenuItems(menu);
+
+  let categories = menu.map((item) => {
+    return item.category;
+  });
+  console.log(new Set(categories));
 });
 
 filterBtns.forEach((btn) => {
@@ -124,8 +137,9 @@ filterBtns.forEach((btn) => {
 });
 
 function displayMenuItems(menuItems) {
-  let displayMenu = menuItems.map((item) => {
-    return `
+  let displayMenu = menuItems
+    .map((item) => {
+      return `
     <article class="menu-item" >
     <img src="${item.img}" alt="${item.title}" class="photo" />
     <div class="item-info">
@@ -138,7 +152,8 @@ function displayMenuItems(menuItems) {
     </div>
   </article>
     `;
-  });
-  displayMenu = displayMenu.join("");
+    })
+    .reduce((a, b) => a + b);
+  // displayMenu = displayMenu.join("");
   sectionCenter.innerHTML = displayMenu;
 }
