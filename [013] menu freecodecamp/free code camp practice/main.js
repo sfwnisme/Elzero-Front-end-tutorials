@@ -168,6 +168,7 @@ function filterButtons() {
     })
     .join("");
   btnContainer.innerHTML = btns;
+
   console.log(btnContainer);
   let filterBtns = document.querySelectorAll(".filter-btn");
   console.log(filterBtns);
@@ -190,3 +191,14 @@ function filterButtons() {
     });
   });
 }
+
+/*TODO
+[] excute the all functions onloading the window
+[] create products using loop like Array.map()
+[] create buttons depending on the products array
+[] excute the buttons
+[] create filter by clicking on buttons
+  [] use dataset ways for buttons
+[] 
+
+*/
