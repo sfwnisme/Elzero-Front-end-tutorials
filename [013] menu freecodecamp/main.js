@@ -76,7 +76,7 @@ const menu = [
     title: "stick dinner",
     category: "dinner",
     price: 39.99,
-    img: "./images/item-9.jpeg",
+    img: "./images/item-10.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
@@ -103,37 +103,12 @@ you will use Array.map() to loop the array of the product details
  * 
  */
 
-let filterBtns = document.querySelectorAll(".filter-btn");
-console.log(filterBtns);
-
 let sectionCenter = document.querySelector(".section-center");
+let btnContainer = document.querySelector(".btn-container");
 
 document.addEventListener("DOMContentLoaded", function () {
   displayMenuItems(menu);
-
-  let categories = menu.map((item) => {
-    return item.category;
-  });
-  console.log(new Set(categories));
-});
-
-filterBtns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    const category = e.currentTarget.dataset.id;
-    const menuCategory = menu.filter((menuItem) => {
-      // console.log(menuItem.category);
-      if (menuItem.category === category) {
-        return menuItem;
-      }
-    });
-    if (category === "all") {
-      displayMenuItems(menu);
-    } else {
-      displayMenuItems(menuCategory);
-    }
-    // displayMenuItems(menuCategory);
-    // console.log(menuCategory);
-  });
+  filterButtons();
 });
 
 function displayMenuItems(menuItems) {
@@ -156,4 +131,62 @@ function displayMenuItems(menuItems) {
     .reduce((a, b) => a + b);
   // displayMenu = displayMenu.join("");
   sectionCenter.innerHTML = displayMenu;
+}
+
+function filterButtons() {
+  /** ===| STEPS
+ * create Array.reduce() high order function
+ * set new paramenters (vlaue, item) value is the accumulator=[the help parameter like in this
+    function we used it as array => ['all']]
+    item is the current value=[menu]
+ * now you should check it the value[new array['all']] includes
+    any category from item[menu.category]
+ * push the item.category to the value parameter
+ * return value
+ * after the function you should add (,['all']) to excute the function
+ */
+  let categories = menu.reduce(
+    (value, item) => {
+      if (!value.includes(item.category)) {
+        value.push(item.category);
+      }
+      return value;
+    },
+    ["all"]
+  );
+  console.log(categories);
+
+  // for (let i = 0; i < categories.length; i++) {
+  //   btnContainer = `
+  // <button type="button" class="filter-btn" data-id="${i}">${i}</button>
+
+  // `;
+  // }
+  let btns = categories
+    .map((cate) => {
+      return `<button type="button" class="filter-btn" data-id=${cate}>${cate}</button>`;
+    })
+    .join("");
+  btnContainer.innerHTML = btns;
+  console.log(btnContainer);
+  let filterBtns = document.querySelectorAll(".filter-btn");
+  console.log(filterBtns);
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const category = e.currentTarget.dataset.id;
+      const menuCategory = menu.filter((menuItem) => {
+        // console.log(menuItem.category);
+        if (menuItem.category === category) {
+          return menuItem;
+        }
+      });
+      if (category === "all") {
+        displayMenuItems(menu);
+      } else {
+        displayMenuItems(menuCategory);
+      }
+      // displayMenuItems(menuCategory);
+      // console.log(menuCategory);
+    });
+  });
 }
