@@ -82,10 +82,10 @@ const menu = [
 ];
 
 /*TODO
-[] excute the all functions onloading the window
-[] create products using loop like Array.map()
-[] create buttons depending on the products array
-[] excute the buttons
+[x] excute the all functions onloading the window
+[x] create products using loop like Array.map()
+[x] create buttons depending on the products array
+[x] excute the buttons
 [] create filter by clicking on buttons
   [] use dataset ways for buttons
 [] 
@@ -95,12 +95,61 @@ const menu = [
 let sectionContainer = document.querySelector(".section-center");
 
 document.addEventListener("DOMContentLoaded", () => {
-  productsContent(menu);
+  menuProducts(menu);
+  filterProductsBtns();
 });
 
-function productsContent(menuItems) {
-  let items = menuItems.map((item) => {
-    return `<article class="menu-item">
+/* ===========| Create Products */
+function filterProductsBtns() {
+  let filterBtns = menu.reduce(
+    (value, item) => {
+      if (!value.includes(item.category)) {
+        value.push(item.category);
+      }
+      return value;
+    },
+    ["all"]
+  );
+
+  //===|append to buttons container
+  let btnsContainer = document.querySelector(".btn-container");
+  filterBtns.forEach((btn) => {
+    let btns = document.createElement("button");
+    btns.setAttribute("type", "button");
+    btns.className = "filter-btn";
+    btns.setAttribute("data-id", btn);
+    btns.innerText = btn.toUpperCase();
+
+    btnsContainer.append(btns);
+    // btnsContainer.innerHTML = btns;
+  });
+
+  // excute the filter
+  let btns = document.querySelectorAll(".filter-btn");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", (b) => {
+      let data = b.target.dataset.id;
+
+      let menuFilter = menu.filter((item) => {
+        if (item.category == data) {
+          return menu;
+        }
+      });
+      if (data == "all") {
+        menuProducts(menu);
+      } else {
+        menuProducts(menuFilter);
+      }
+    });
+  });
+}
+
+/* ===========| Create Products */
+function menuProducts(menuItems) {
+  let items = menuItems
+    .map((item) => {
+      return `<article class="menu-item">
     <img src=${item.img} alt=${item.title} class="photo" />
     <div class="item-info">
       <header>
@@ -112,47 +161,7 @@ function productsContent(menuItems) {
       </p>
     </div>
   </article>`;
-    // let article = document.createElement("div");
-    // article.className = "menu-item";
-
-    // let image = document.createElement("img");
-    // image.className = "photo";
-    // image.src = item.img;
-
-    // let itemInfo = document.createElement("div");
-    // itemInfo.className = "item-info";
-
-    // // header
-    // let header = document.createElement("header");
-
-    // let h4Title = document.createElement("h4");
-    // h4Title.innerText = item.title;
-
-    // let price = document.createElement("h4");
-    // price.className = "price";
-    // price.innerText = item.price;
-
-    // //header append
-    // header.append(h4Title);
-    // header.append(price);
-
-    // //description
-    // let desc = document.createElement("p");
-    // desc.innerText = item.desc;
-
-    // // item info append
-    // itemInfo.append(header);
-    // itemInfo.append(desc);
-
-    // // article append
-    // article.prepend(image);
-    // article.append(itemInfo);
-    // // article.append()
-    // console.log(article);
-    // return sectionContainer.append(article);
-  }).join("");
-  console.log(items);
-  sectionContainer.innerHTML = items
+    })
+    .reduce((acc, curr) => acc + curr);
+  sectionContainer.innerHTML = items;
 }
-
-console.log(sectionContainer);
