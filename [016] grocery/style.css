@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: black;
+  /* font-size: 10px; */
+}
+section {
+  background-color: rgb(50, 72, 111);
+  padding: 1rem;
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+  width: 500px;
+}
+section label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+section input[type="submit"] {
+  background-color: rgb(227, 64, 5);
+  border: 0;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+}
+input {
+  border: none;
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+  padding: 0.5rem;
+}
+input[type="text"] {
+  width: 100%;
+  border: 2px solid rgb(181, 214, 255);
+}
+.items {
+  margin-top: 2rem;
+}
+.items .item {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+.btns {
+  display: flex;
+  gap: 0.4rem;
+}
+.btns button {
+  color: white;
+  border: 0;
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+}
+.btns .delete {
+  background-color: rgb(220, 8, 8);
+}
+.btns .edit {
+  background-color: rgb(11, 68, 191);
+}
