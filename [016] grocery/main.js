@@ -1,77 +1,82 @@
-let input = document.querySelector("[type=text]");
-let submit = document.querySelector("[type=submit]");
-let itemBox = document.querySelector(".items");
-// let btns = document.querySelector(".btns");
-// let del = document.querySelector(".delete");
-// let edit = document.querySelector(".edit");
-// console.log(edit);
-let arr;
-if (localStorage.product) {
-  arr = JSON.parse(localStorage.product);
-} else {
-  arr = [];
-}
-// createItem2();
+// ****** select items **********
 
-submit.addEventListener("click", newObj);
-
-function newObj() {
-  if (input.value != "") {
-    obj = {
-      itemTitle: input.value,
-      id: Date.now(),
-    };
-    arr.push(obj);
-    console.log(arr);
-    localStorage.setItem("product", JSON.stringify(arr));
-  }
-  input.value = "";
-  createItem2();
-}
-
-function createItem2() {
-  for (let i = 0; i < arr.length; i++) {
-    let data = `
-    <div class="item">
-            <p class="name">${arr[i].itemTitle}</p>
-            <div class="btns">
-              <button class="delete">delete</button>
-              <button class="edit">edit</button> 
-            </div>
+const form = document.querySelector(".grocery-form");
+const alert = document.querySelector(".alert");
+const grocery = document.getElementById("grocery");
+const submitBtn = document.querySelector(".submit-btn");
+const container = document.querySelector(".grocery-container");
+const list = document.querySelector(".grocery-list");
+const clearBtn = document.querySelector(".clear-btn");
+// edit option
+let editElement;
+let editFlag = false;
+let editID = "";
+// ****** EVENT LISTENERS **********
+form.addEventListener("submit", addItem);
+function addItem(e) {
+  e.preventDefault();
+  let value = grocery.value;
+  let id = new Date().getTime().toString();
+  console.log(id);
+  //filter conditions
+  if (value && !editFlag) {
+    let element = document.createElement("article");
+    // add class
+    element.classList.add("grocery-item");
+    // add id
+    let attr = document.createAttribute("data-id");
+    attr.value = id;
+    element.setAttributeNode(attr);
+    element.innerHTML = `
+    <p class="title">${value}</p>
+      <div class="btn-container">
+        <!-- edit btn -->
+        <button type="button" class="edit-btn">
+          <i class="fas fa-edit"></i>
+        </button>
+        <!-- delete btn -->
+        <button type="button" class="delete-btn">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
     `;
-    itemBox.innerHTML = data;
+    // append child
+    list.appendChild(element);
+    container.classList.add("show-container");
+    // display alert
+    displayAlert("added value", "success");
+    // local storage
+    localStorage.setItem("items", list.innerHTML);
+  } else if (value && editFlag) {
+    console.log("you can edit freely");
+    displayAlert("edited value", "success");
+  } else {
+    console.log("you have nothing to add or edit");
+    displayAlert("empty value", "danger");
   }
-  console.log(arr);
 }
 
-// function createItem() {
-//   arr.forEach((e) => {
-//     console.log(e);
-//     let btns = document.createElement("div");
-//     btns.className = "btns";
+// display alert
 
-//     // let btns = document.createElement("div");
-//     // btns.className = "btns";
+function displayAlert(text, action) {
+  alert.textContent = text;
+  alert.classList.add(`alert-${action}`);
 
-//     let itemCont = document.createElement("div");
-//     itemCont.className = "item";
+  setTimeout(() => {
+    alert.textContent = "";
+    alert.classList.remove(`alert-${action}`);
+  }, 1000);
+}
 
-//     let itemName = document.createElement("p");
-//     itemName.className = "name";
-//     itemName.innerText = e.itemTitle;
+// ****** FUNCTIONS **********
 
-//     let itemDel = document.createElement("button");
-//     itemDel.className = "delete";
-//     itemDel.innerText = "delete";
+// ****** LOCAL STORAGE **********
 
-//     let itemEdit = document.createElement("button");
-//     itemEdit.className = "edit";
-//     itemEdit.innerText = "edit";
+// ****** SETUP ITEMS **********
 
-//     itemCont.append(itemName);
-//     btns.append(itemDel);
-//     btns.append(itemEdit);
-//     itemBox.append(itemCont);
-//     itemCont.append(btns);
-//   });
-// }
+window.addEventListener("load", () => {
+  if (localStorage.items) {
+    list.innerHTML = localStorage.items;
+    container.classList.add("show-container");
+  }
+});
