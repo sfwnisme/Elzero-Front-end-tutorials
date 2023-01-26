@@ -98,6 +98,7 @@ function addItem(e) {
     //#######################[0]#############################
   } else if (value && editFlag) {
     console.log("you can edit freely");
+    console.log(editElement.innerText);
     editElement.textContent = value;
     displayAlert("edited value", "success");
     // edit local storage

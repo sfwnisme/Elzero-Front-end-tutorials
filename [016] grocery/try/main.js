@@ -28,6 +28,7 @@ let editFlag = false;
 let editID = "";
 // ****** EVENT LISTENERS **********
 form.addEventListener("submit", addItem);
+clearBtn.addEventListener("click", clearItems);
 
 // ****** FUNCTIONS **********
 function addItem(e) {
@@ -86,6 +87,16 @@ function addItem(e) {
   } else {
     console.log("no value no edit");
     displayAlert("no items", "danger");
+  }
+}
+
+function clearItems() {
+  let items = document.querySelectorAll(".grocery-item");
+  if (items.length > 0) {
+    items.forEach((item) => {
+      list.removeChild(item);
+    });
+    container.classList.remove("show-container");
   }
 }
 
