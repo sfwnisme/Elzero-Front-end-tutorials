@@ -81,6 +81,8 @@ function addItem(e) {
     console.log("value and edit");
 
     editElement.textContent = value;
+    // edit local storage
+    editLocalStorage(editID, value);
 
     displayAlert("item edit", "success");
     setBackToDefault();
@@ -150,9 +152,7 @@ function setBackToDefault() {
 // ****** LOCAL STORAGE **********
 // add to local storage
 function addToLocalStorage(id, value) {}
-function removeFromLocalStorage(e) {
-  localStorage.removeItem(e);
-  console.log(e);
-}
+function removeFromLocalStorage(id) {}
+function editLocalStorage(id, value) {}
 
 // ****** SETUP ITEMS **********
