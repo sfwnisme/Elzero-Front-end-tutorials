@@ -2,6 +2,6 @@
 
 _2023-1-15_
 
-- [ ] follow tutorial
-- [ ] try repeat the tutorial my self
+- [x] follow tutorial
+- [x] try repeat the tutorial my self
 - [ ] try another ways
