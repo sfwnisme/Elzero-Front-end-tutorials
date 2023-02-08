@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.cont {
+  margin-inline: auto;
+  padding-block: 2rem;
+}
+.cont .filter {
+  margin-inline: auto;
+  width: fit-content;
+  padding: 2rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.cont .filter p {
+  background-color: turquoise;
+  padding: 0.5rem 1rem;
+}
+.cont .box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.info {
+  background-color: gold;
+  width: 300px;
+  height: 300px;
+  /* aspect-ratio: 8/6; */
+  padding: 2rem;
+  border: 1px solid black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}

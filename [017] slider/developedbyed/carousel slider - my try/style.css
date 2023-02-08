@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --info-size: ;
+}
+body {
+  font-family: Tahoma, Arial;
+  width: 100%;
+}
+
+.cont {
+  width: var(--info-size);
+  overflow: hidden;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+}
+.cont .box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* transition: 200ms;
+  -webkit-transition: 200ms;
+  -moz-transition: 200ms;
+  -ms-transition: 200ms;
+  -o-transition: 200ms; */
+}
+.cont .box .info {
+  min-width: 400px;
+  /* display: inline; */
+  padding: 1rem;
+}

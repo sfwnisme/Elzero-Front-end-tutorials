@@ -18,6 +18,10 @@ body {
   position: absolute;
   opacity: 0;
   transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -ms-transition: opacity 1s;
+  -o-transition: opacity 1s;
   z-index: 1;
 }
 .slider-container img.active {
