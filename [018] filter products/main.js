@@ -50,6 +50,9 @@ function implement() {
           return a;
         }
       });
+
+      // box.append(...all);
+      console.log(...all);
       box.append(...all);
     });
   });
