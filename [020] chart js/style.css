@@ -9,7 +9,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-div {
+.chart {
   width: 90vw;
   height: auto;
 }

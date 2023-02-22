@@ -2,26 +2,31 @@ html,
 * {
   cursor: none;
 }
+body {
+  overflow-x: hidden;
+}
 @media (max-width: 700px) {
-  html,
   * {
     cursor: auto !important;
   }
 }
-body {
-  overflow-x: hidden;
-}
 :root {
-  --cursor-one: 50px;
-  --cursor-one-active: calc(var(--cursor-one) * 1.5);
+  --cursor-one: 40px;
+  --cursor-one-text: calc(var(--cursor-one) * 0.8);
+  --cursor-one-text-width: 4px;
+  --cursor-one-active: calc(var(--cursor-one) * 2);
   --cursor-one-clicked: calc(var(--cursor-one-active) * 1.5);
-  --cursor-two: 5px;
+  --cursor-one-clicked-text: calc(var(--cursor-one-active) * 0.1);
+  --cursor-two: 4px;
   --cursor-two-disable: none;
-  --x: ;
-  --y: ;
+  --cursor-strok: 3px;
+  --opacity: 0.2;
+  --font-two: black;
 }
 .cursor-box {
   overflow: visible;
+
+  /* to excute the cursor */
   pointer-events: none;
 }
 
@@ -33,51 +38,60 @@ body {
 .cursor-one {
   width: var(--cursor-one);
   height: var(--cursor-one);
-  border: 2px solid black;
+  border: var(--cursor-strok) solid black;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
   display: block;
-  pointer-events: none;
   position: fixed;
-  top: var(--y);
-  left: var(--x);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  -webkit-transition: 0.1s;
-  -moz-transition: 0.1s;
-  -ms-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.05s;
+  -moz-transition: 0.05s;
+  -ms-transition: 0.05s;
+  -o-transition: 0.05s;
+  transition: 0.05s;
   /*thisoverflowwillforceAOSlibrarytonothidethecursor*/
   overflow: visible !important;
   z-index: 10;
 }
 .cursor-one.active {
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: grayscale();
+  background-color: black;
   height: var(--cursor-one-active);
   width: var(--cursor-one-active);
   border: none;
+  opacity: var(--opacity);
+}
+.cursor-one.active-text {
+  background-color: black;
+  height: var(--cursor-one-text);
+  width: var(--cursor-one-text-width);
+  border: none;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  animation: 900ms cursorText infinite ease-in;
+  -webkit-animation: 900ms cursorText infinite ease-in;
+  opacity: 1;
 }
 .cursor-one.clicked {
   background-color: rgba(0, 0, 0, 0.564);
   height: var(--cursor-one-clicked);
   width: var(--cursor-one-clicked);
   border: none;
-  animation: clickAnimation 50ms ease;
-  -webkit-animation: clickAnimation 50ms ease;
 }
-@keyframes clickAnimation {
-  50% {
-    height: 20px;
-    width: 20px;
-  }
+.cursor-one.clicked-text {
+  background-color: rgba(0, 0, 0, 0.564);
+  height: var(--cursor-one-clicked-text);
+  width: var(--cursor-one-clicked-text);
+  border: none;
 }
 .cursor-two {
   background-color: black;
@@ -86,18 +100,16 @@ body {
   display: block;
   z-index: 10;
   position: fixed;
-  top: var(--y);
-  left: var(--x);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  -webkit-transition: 0.15s;
-  -moz-transition: 0.15s;
-  -ms-transition: 0.15s;
-  -o-transition: 0.15s;
-  transition: 0.15s;
+  -webkit-transition: 0.09s;
+  -moz-transition: 0.09s;
+  -ms-transition: 0.09s;
+  -o-transition: 0.09s;
+  transition: 0.09s;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -107,4 +119,12 @@ body {
 }
 .cursor-two.disable {
   display: var(--cursor-two-disable);
+}
+
+/* KEYFRAMES */
+@keyframes cursorText {
+  50% {
+    opacity: 0.4;
+    height: calc(var(--cursor-one-text) * 1.1);
+  }
 }
